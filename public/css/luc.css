@@ -1,0 +1,27 @@
+.bg-primary {
+    background-color: #0b132a !important;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #0b132a;
+    border-color: #0b132a;
+}
+
+.text-primary {
+    color: #0b132a !important;
+}
+
+.bg-secondary {
+    background-color: #fb040d !important;
+}
+
+.btn-secondary{
+    color: #fff;
+    background-color: #fb040d;
+    border-color: #0b132a;
+}
+
+.testimonial-carousel{
+    background: rgba(251, 4, 13, 0.7);
+}
