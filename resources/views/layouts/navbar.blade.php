@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow-sm px-5 py-3 py-lg-0">
     <a href="#" class="navbar-brand p-0">
         <h1 class="m-0 text-primary">
-            <img src="img/logo.png" height="120px" alt="">
+            <img src="img/logo.png" height="100px" alt="">
         </h1>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -16,6 +16,6 @@
             <a href="{{ route('contact') }}" class="nav-item nav-link @yield('active-contact')">Nous contacter</a>
         </div>
         <button type="button" class="btn text-dark" data-bs-toggle="modal" data-bs-target="#searchModal"><i class="fa fa-search"></i></button>
-        <a href="#" class="btn btn-primary py-2 px-4 ms-3">Demandez un devis</a>
+        <a href="#devis" class="btn btn-primary py-2 px-4 ms-3">Demandez un devis</a>
     </div>
 </nav>
