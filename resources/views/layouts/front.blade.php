@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Accueil - AP2S Technologies</title>
+    <title>AP2S Technologies</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
@@ -260,7 +260,7 @@
                     <p class="mb-md-0">Copyright &copy; <a class="text-white border-bottom" href="#">AP2S Technologies</a>. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
-                    <p class="mb-0">Designed by <a class="text-white border-bottom" href="https://jeanluc.freehzaix.com">AP2S Technologies</a></p>
+                    <p class="mb-0">Designed by <a class="text-white border-bottom" href="#">Axel Emmanuel & Jean-Luc</a></p>
                 </div>
             </div>
         </div>
