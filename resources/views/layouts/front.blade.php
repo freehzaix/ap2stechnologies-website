@@ -68,10 +68,14 @@
                 <div class="col-lg-6">
                     <div class="appointment-form h-100 d-flex flex-column justify-content-center text-center p-5 wow zoomIn" data-wow-delay="0.6s">
                         <h1 class="text-white mb-4">Demandez un devis</h1>
-                        <form>
+                        @if (session('status'))
+                            <div class="alert alert-success">{{ session('status') }}</div>
+                        @endif
+                        <form action="{{ route('devis.post') }}" method="POST">
+                            @csrf
                             <div class="row g-3">
                                 <div class="col-12 col-sm-12">
-                                    <select class="form-select bg-light border-0" style="height: 55px;">
+                                    <select name="service" class="form-select bg-light border-0" style="height: 55px;">
                                         <option selected>Selectionnez un service</option>
                                         <option value="Création de site internet">Création de site internet</option>
                                         <option value="Gestion de page">Gestion de page</option>
@@ -79,22 +83,37 @@
                                         <option value="Création d'application web">Création d'application web</option>
                                         <option value="Création d'application mobile">Création d'application mobile</option>
                                     </select>
+                                    @error('service')
+                                        <div class="alert alert-danger"> {{ $message }} </div>
+                                    @enderror
                                 </div>
                                 
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Nom" style="height: 55px;">
+                                    <input name="nom" type="text" class="form-control bg-light border-0" placeholder="Nom" style="height: 55px;">
+                                    @error('nom')
+                                        <div class="alert alert-danger"> {{ $message }} </div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
-                                    <input type="text" class="form-control bg-light border-0" placeholder="Prénom" style="height: 55px;">
+                                    <input name="prenom" type="text" class="form-control bg-light border-0" placeholder="Prénom" style="height: 55px;">
+                                    @error('prenom')
+                                        <div class="alert alert-danger"> {{ $message }} </div>
+                                    @enderror
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="date" id="date1" data-target-input="nearest">
-                                        <input type="email" class="form-control bg-light border-0" placeholder="Adresse mail" style="height: 55px;">
+                                        <input name="email" type="email" class="form-control bg-light border-0" placeholder="Adresse mail" style="height: 55px;">
+                                        @error('email')
+                                            <div class="alert alert-danger"> {{ $message }} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-6">
                                     <div class="time" id="time1" data-target-input="nearest">
-                                        <input type="text" class="form-control bg-light border-0" placeholder="Numéro de téléphone" style="height: 55px;">
+                                        <input type="text" name="telephone" class="form-control bg-light border-0" placeholder="Numéro de téléphone" style="height: 55px;">
+                                        @error('telephone')
+                                            <div class="alert alert-danger"> {{ $message }} </div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="col-12">
@@ -108,118 +127,31 @@
         </div>
     </div>
 
-
-    <!-- Team Start -->
-    <div class="container-fluid py-5">
-        <div class="container">
-            <div class="row g-5">
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.1s">
-                    <div class="section-title bg-light rounded h-100 p-5">
-                        <h5 class="position-relative d-inline-block text-primary text-uppercase">Notre équipe</h5>
-                        <h1 class="display-6 mb-4">Découvrez notre équipe certifié et expérimenté.</h1>
-                        <a href="#devis" class="btn btn-primary py-3 px-5">Demandez un devis</a>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="position-relative rounded-top" style="z-index: 1;">
-                            <img class="img-fluid rounded-top w-100" src="img/team-1.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
+    <!-- Testimonial Start -->
+    <div class="container-fluid bg-primary bg-testimonial py-5 my-5 wow fadeInUp" data-wow-delay="7.7s">
+        <div class="container py-5">
+            <div class="row justify-content-center">
+                <div class="col-lg-7">
+                    <div class="owl-carousel testimonial-carousel rounded p-5 wow zoomIn" data-wow-delay="0.6s">
+                        <div class="testimonial-item text-center text-white">
+                            <img class="img-fluid mx-auto rounded mb-4" src="img/testimonial-1.jpg" alt="">
+                            <p class="fs-5">J'ai été impressionné par le professionnalisme de l'équipe. Grâce à leur expertise, mon entreprise a connu une croissance rapide et une visibilité accrue. Je recommande vivement leurs services de marketing digital.</p>
+                            <hr class="mx-auto w-25">
+                            <h4 class="text-white mb-0">Mamadou Koné</h4>
                         </div>
-                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                            <h4 class="mb-2">MEDARD CAKPO</h4>
-                            <p class="text-primary mb-0">WEB MASTER</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="team-item">
-                        <div class="position-relative rounded-top" style="z-index: 1;">
-                            <img class="img-fluid rounded-top w-100" src="img/team-2.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                            <h4 class="mb-2">Lux Caris SOSSOU</h4>
-                            <p class="text-primary mb-0">Responsable Stocks et Approvisionnements</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.1s">
-                    <div class="team-item">
-                        <div class="position-relative rounded-top" style="z-index: 1;">
-                            <img class="img-fluid rounded-top w-100" src="img/team-3.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                            <h4 class="mb-2">Jean-Christ Bedel</h4>
-                            <p class="text-primary mb-0">Développeur Full Stack</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.3s">
-                    <div class="team-item">
-                        <div class="position-relative rounded-top" style="z-index: 1;">
-                            <img class="img-fluid rounded-top w-100" src="img/team-4.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                            <h4 class="mb-2">Jean-Luc DOH</h4>
-                            <p class="text-primary mb-0">Développeur Web</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 wow slideInUp" data-wow-delay="0.6s">
-                    <div class="team-item">
-                        <div class="position-relative rounded-top" style="z-index: 1;">
-                            <img class="img-fluid rounded-top w-100" src="img/team-5.jpg" alt="">
-                            <div class="position-absolute top-100 start-50 translate-middle bg-light rounded p-2 d-flex">
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-twitter fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-facebook-f fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-linkedin-in fw-normal"></i></a>
-                                <a class="btn btn-primary btn-square m-1" href="#"><i class="fab fa-instagram fw-normal"></i></a>
-                            </div>
-                        </div>
-                        <div class="team-text position-relative bg-light text-center rounded-bottom p-4 pt-5">
-                            <h4 class="mb-2">Axel Emmanuel</h4>
-                            <p class="text-primary mb-0">Développeur Backend</p>
+                        <div class="testimonial-item text-center text-white">
+                            <img class="img-fluid mx-auto rounded mb-4" src="img/testimonial-2.jpg" alt="">
+                            <p class="fs-5">La création de mon site web par cette agence a été un succès total. Ils ont su capturer l'essence de mon activité et créer une plateforme attrayante et conviviale. Je suis extrêmement satisfait de leur travail et je les recommande sans hésitation.</p>
+                            <hr class="mx-auto w-25">
+                            <h4 class="text-white mb-0">Olivier Konaté</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!-- Team End -->
-
-
-    <!-- Newsletter Start -->
-    <div class="container-fluid position-relative pt-5 wow fadeInUp" data-wow-delay="0.1s" style="z-index: 1;">
-        <div class="container">
-            
-        </div>
-    </div>
-    <!-- Newsletter End -->
+    <!-- Testimonial End -->
     
-
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light py-5 wow fadeInUp" data-wow-delay="0.3s" style="margin-top: -75px;">
         <div class="container pt-5">
